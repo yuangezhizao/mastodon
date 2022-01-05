@@ -2,7 +2,7 @@ name: Check i18n
 
 on:
   push:
-    branches: [ "v3.4.4-yuangezhizao" ]
+    branches: [ v3.4.4-yuangezhizao ]
   pull_request:
     branches: [ main ]
 
