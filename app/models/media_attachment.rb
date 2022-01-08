@@ -156,7 +156,7 @@ class MediaAttachment < ApplicationRecord
   }.freeze
 
   GLOBAL_CONVERT_OPTIONS = {
-    all: '-strip +set modify-date +set create-date', #TODO：210108 remove "-quality 90"
+    all: '+set modify-date +set create-date', #TODO：210108 remove "-quality 90 -strip"
   }.freeze
 
   IMAGE_LIMIT = ((ENV['IMAGE_LIMIT'] || 10).to_i).megabytes
