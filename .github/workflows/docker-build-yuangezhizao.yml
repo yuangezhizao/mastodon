@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - v3.4.4-yuangezhizao
+      - v3.5.6-yuangezhizao
 
 jobs:
   docker-build:
