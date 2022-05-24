@@ -38,10 +38,10 @@ class MediaAttachment < ApplicationRecord
 
   MAX_DESCRIPTION_LENGTH = 1_500
 
-  IMAGE_LIMIT = 10.megabytes
-  VIDEO_LIMIT = 40.megabytes
+  IMAGE_LIMIT = ((ENV['IMAGE_LIMIT'] || 10).to_i).megabytes
+  VIDEO_LIMIT = ((ENV['VIDEO_LIMIT'] || 40).to_i).megabytes
 
-  MAX_VIDEO_MATRIX_LIMIT = 2_304_000 # 1920x1200px
+  MAX_VIDEO_MATRIX_LIMIT = 2_304_0000 # 1920x1200px #TODO: 210107 change from 2_304_000 to 2_304_0000
   MAX_VIDEO_FRAME_RATE   = 60
 
   IMAGE_FILE_EXTENSIONS = %w(.jpg .jpeg .png .gif).freeze
@@ -158,12 +158,6 @@ class MediaAttachment < ApplicationRecord
   GLOBAL_CONVERT_OPTIONS = {
     all: '+set modify-date +set create-date', #TODO：210108 remove "-quality 90 -strip"
   }.freeze
-
-  IMAGE_LIMIT = ((ENV['IMAGE_LIMIT'] || 10).to_i).megabytes
-  VIDEO_LIMIT = ((ENV['VIDEO_LIMIT'] || 40).to_i).megabytes
-
-  MAX_VIDEO_MATRIX_LIMIT = 2_304_0000 # 1920x1200px #TODO: 210107 change from 2_304_000 to 2_304_0000
-  MAX_VIDEO_FRAME_RATE   = 60
 
   belongs_to :account,          inverse_of: :media_attachments, optional: true
   belongs_to :status,           inverse_of: :media_attachments, optional: true
