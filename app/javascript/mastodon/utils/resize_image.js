@@ -1,6 +1,14 @@
 import EXIF from 'exif-js';
 
-const MAX_IMAGE_PIXELS = 48000001; // 1920x1080px #TODO: 220626 change from 2073600 to 48000001
+var MAX_IMAGE_PIXELS = 48000001; // 1920x1080px #TODO: 220626 change from 2073600 to 48000001
+
+try {
+  const max_image_pixels = parseInt(localStorage.getItem('max_image_pixels'));
+  if (max_image_pixels) {
+    MAX_IMAGE_PIXELS = max_image_pixels;
+  }
+} catch (e) {
+}
 
 const _browser_quirks = {};
 
