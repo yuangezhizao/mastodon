@@ -41,7 +41,7 @@ class MediaAttachment < ApplicationRecord
   IMAGE_LIMIT = ((ENV['IMAGE_LIMIT'] || 10).to_i).megabytes
   VIDEO_LIMIT = ((ENV['VIDEO_LIMIT'] || 40).to_i).megabytes
 
-  MAX_VIDEO_MATRIX_LIMIT = 2_304_0000 # 1920x1200px #TODO: 210107 change from 2_304_000 to 2_304_0000
+  MAX_VIDEO_MATRIX_LIMIT = (ENV['MAX_VIDEO_MATRIX_LIMIT'] || 48_000_001).to_i # 1920x1200px #TODO: 220626 change from 2_073_600 to 48_000_001
   MAX_VIDEO_FRAME_RATE   = 60
 
   IMAGE_FILE_EXTENSIONS = %w(.jpg .jpeg .png .gif).freeze
@@ -67,7 +67,7 @@ class MediaAttachment < ApplicationRecord
 
   IMAGE_STYLES = {
     original: {
-      pixels: 48_000_000, # 1920x1080px #TODO: 210107 change from 2_073_600 to 48_000_000
+      pixels: (ENV['IMAGE_STYLES_ORIGINAL_PIXELS'] || 48_000_001).to_i, # 1920x1080px #TODO: 220626 change from 2_073_600 to 48_000_001
       file_geometry_parser: FastGeometryParser,
     }.freeze,
 
