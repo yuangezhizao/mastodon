@@ -118,7 +118,7 @@ group :test do
   gem 'faker', '~> 2.21'
   gem 'microformats', '~> 4.2'
   gem 'rails-controller-testing', '~> 1.0'
-  gem 'rspec-sidekiq', '~> 3.1'
+  gem 'rspec-sidekiq', '~> 4.2'
   gem 'simplecov', '~> 0.21', require: false
   gem 'webmock', '~> 3.14'
   gem 'rspec_junit_formatter', '~> 0.5'
