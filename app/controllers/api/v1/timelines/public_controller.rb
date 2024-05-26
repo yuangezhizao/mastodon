@@ -17,7 +17,7 @@ class Api::V1::Timelines::PublicController < Api::BaseController
   end
 
   def load_statuses
-    cached_public_statuses_page
+    !user_signed_in? ? [] : cached_public_statuses_page
   end
 
   def cached_public_statuses_page
