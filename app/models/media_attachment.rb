@@ -39,12 +39,12 @@ class MediaAttachment < ApplicationRecord
 
   MAX_DESCRIPTION_LENGTH = 1_500
 
-  IMAGE_LIMIT = 16.megabytes
-  VIDEO_LIMIT = 99.megabytes
+  IMAGE_LIMIT = ((ENV['MEDIAATTACHMENT_IMAGE_LIMIT'] || 16).to_i).megabytes
+  VIDEO_LIMIT = ((ENV['MEDIAATTACHMENT_VIDEO_LIMIT'] || 99).to_i).megabytes
 
-  MAX_VIDEO_MATRIX_LIMIT = 8_294_400 # 3840x2160px
-  MAX_VIDEO_FRAME_RATE   = 120
-  MAX_VIDEO_FRAMES       = 36_000 # Approx. 5 minutes at 120 fps
+  MAX_VIDEO_MATRIX_LIMIT = (ENV['MEDIAATTACHMENT_MAX_VIDEO_MATRIX_LIMIT'] || 8_294_400).to_i # 3840x2160px
+  MAX_VIDEO_FRAME_RATE   = (ENV['MEDIAATTACHMENT_MAX_VIDEO_FRAME_RATE'] || 120).to_i
+  MAX_VIDEO_FRAMES       = (ENV['MEDIAATTACHMENT_MAX_VIDEO_FRAMES'] || 36_000).to_i # Approx. 5 minutes at 120 fps
 
   IMAGE_FILE_EXTENSIONS = %w(.jpg .jpeg .png .gif .webp .heic .heif .avif).freeze
   VIDEO_FILE_EXTENSIONS = %w(.webm .mp4 .m4v .mov).freeze
@@ -70,7 +70,7 @@ class MediaAttachment < ApplicationRecord
 
   IMAGE_STYLES = {
     original: {
-      pixels: 8_294_400, # 3840x2160px
+      pixels: (ENV['MEDIAATTACHMENT_IMAGE_STYLES_ORIGINAL_PIXELS'] || 8_294_400).to_i, # 3840x2160px
       file_geometry_parser: FastGeometryParser,
     }.freeze,
 
